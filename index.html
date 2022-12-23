@@ -1,0 +1,183 @@
+<html>
+    <head>
+        <title>Flights</title>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Cedarville+Cursive' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+        </style>
+    </head>
+    <body>
+        <div id="nav">
+            <div id="navLeft">
+                <div class="navItem">
+                    <i class="fas fa-sign-in-alt" style="color: #ffffff"></i><span class="itemText" data-toggle="tooltip" data-placement="bottom" title="This is only an example site">Login</span>
+                </div>
+                <div class="navItem">
+                    <i class="fas fa-briefcase" style="color: #ffffff"></i><span class="itemText" data-toggle="tooltip" data-placement="bottom" title="This is only an example site">Register</span>
+                </div>
+                <div class="navItem">
+                    <i class="fas fa-question-circle" style="color: #ffffff"></i><span class="itemText" data-toggle="tooltip" data-placement="bottom" title="This is only an example site">Help</span>
+                </div>
+            </div>
+            <div id="call">
+                <i class="fas fa-phone"></i>
+                <span>Call&nbsp;us&nbsp;now&nbsp;at</span>
+                <span style="color: #202020;font-weight: 700;">+1-XXX-XXX-XXXX</span>
+            </div>
+        </div>
+        <div id="imageBackground">
+            <div id="containerSearch">
+                <h1 id="h1Main">Flight search</h1>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons" id="radioWay">
+                  <label class="btn btn-info btn-sm active">
+                    <input type="radio" onchange="changeRadio(1)" checked>Roundtrip
+                  </label>
+                  <label class="btn btn-info btn-sm">
+                    <input type="radio" onchange="changeRadio(2)">One way
+                  </label>
+                </div>
+                
+                <div id="inputCitiesContainer" class="input-group">   
+                    <input type="text" class="form-control" placeholder="Example: Tokyo, Madrid, Los Angeles" id="inputOrigin">    
+                    <img id="invertCities" src="images/arrows.svg" style="margin-top: 5px;float: center;" draggable="false">         
+                    <input type="text" class="form-control" placeholder="Example: Tokyo, Madrid, Los Angeles" id="inputDestination">
+                </div>
+                <div id="inputDatesContainer" class="input-group">
+                    <input type="text" class="form-control" placeholder="Select departure date" id="inputDepartureDate" readonly data-html='true' data-toggle="popover-date1" data-placement="bottom" title="Select departure date" data-content="<div id='calendar1'></div>">
+                    <img id="invertDates" src="images/arrows.svg" style="margin-top: 5px;float: center;" draggable="false">         
+                    <input type="text" class="form-control" placeholder="Select arrival date" id="inputArrivalDate" readonly data-html='true' data-toggle="popover-date2" data-placement="bottom" title="Select arrival date" data-content="<div id='calendar2'></div>">
+                </div>
+                <div class="form-check" id="checkBoxesSearch">
+                  <input class="form-check-input" type="checkbox" value="" id="checkBoxOnlyDirect">
+                  <label class="form-check-label" for="checkBoxOnlyDirect">
+                    Only direct flights
+                  </label>
+                </div>
+                <select class="custom-select" id="inputPeople">
+                    <option value="" selected disabled>Adult/s</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button type="button" class="btn btn-info" id="searchButton" data-toggle="tooltip" data-placement="bottom" title="This is only an example site">Search →</button>
+            </div>    
+        </div>
+        <div id="recommendedDestinations">
+            <div class="container">
+                <p id="recommendedDestinationsText1">Don't know where to go?</p>
+                <p id="recommendedDestinationsText2">This are the most popular destinations in your country</p>
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                      <div class="cardd">
+                          <img class="card-img-class" src="images/example1.jpg">
+                          <div class="card-price-container">
+                            <p class="card-price"><b style="float:left; margin-top: 5px;margin-left: 5px;font-size: 20px;">Los Angeles </b><span style="font-size: 10px;">Starting&nbsp;at</span>&nbsp;$894</p>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                      <div class="cardd">
+                          <img class="card-img-class" src="images/example2.jpg">
+                          <div class="card-price-container">
+                            <p class="card-price"><b style="float:left; margin-top: 5px;margin-left: 5px;font-size: 20px;">Bangkok </b><span style="font-size: 10px;">Starting&nbsp;at</span>&nbsp;$1145</p>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                      <div class="cardd">
+                          <img class="card-img-class" src="images/example3.jpg">
+                          <div class="card-price-container">
+                            <p class="card-price"><b style="float:left; margin-top: 5px;margin-left: 5px;font-size: 20px;">Tokyo </b><span style="font-size: 10px;">Starting&nbsp;at</span>&nbsp;$1020</p>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                      <div class="cardd">
+                          <img class="card-img-class" src="images/example4.jpg">
+                          <div class="card-price-container">
+                            <p class="card-price"><b style="float:left; margin-top: 5px;margin-left: 5px;font-size: 20px;">New York </b><span style="font-size: 10px;">Starting&nbsp;at</span>&nbsp;$750</p>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="advantagesContainer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 id="advantagesTitle" align="center">Why us?</h4>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="advantagesCircle">
+                            <img class="advantages-img-class" src="images/credit_card.svg" draggable="false">
+                        </div>
+                        <p class="advantages-p" align="center">Always cheap flights with accessible installments</p>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="advantagesCircle">
+                            <img class="advantages-img-class" src="images/flights.svg" draggable="false">
+                        </div>
+                        <p class="advantages-p" align="center">More than a million flight connections</p>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="advantagesCircle">
+                            <img class="advantages-img-class" src="images/sale.svg" draggable="false">
+                        </div>
+                        <p class="advantages-p" align="center">New deals every week up to 50% off</p>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <div class="advantagesCircle">
+                            <img class="advantages-img-class" src="images/support.svg" draggable="false">
+                        </div>
+                        <p class="advantages-p" align="center">24/7 customer service</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="container2">
+            <div id="newsletter">
+                <div id="newsletterBody">
+                    <p id="newsletterText">RECEIVE EXCLUSIVE OFFERS BY EMAIL EVERY FRIDAY</p>
+                    <div id="newsletterSignUp">
+                        <input id="newsletterInput" autocomplete="email" type="email" placeholder="Email address" style="margin-bottom: 10px;">
+                        <button id="newsletterButton" style="margin-bottom: 20px;" data-toggle="tooltip" data-placement="bottom" title="This is only an example site">SIGN UP</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="socialNetworks">
+                <p id="followText">Follow us</p>
+                <div class="col-12" id="socialNetworksIcons">
+                    <i class="fab fa-instagram fa-2x" data-toggle="tooltip" data-placement="bottom" title="This is only an example site"></i>
+                    <i class="fab fa-facebook-square fa-2x" data-toggle="tooltip" data-placement="bottom" title="This is only an example site"></i>
+                    <i class="fab fa-twitter-square fa-2x" data-toggle="tooltip" data-placement="bottom" title="This is only an example site"></i>
+                </div>
+            </div>
+            <div id="footer">
+                <p><a href="" data-toggle="tooltip" data-placement="bottom" title="This is only an example site">Terms of use</a> | <a href="" data-toggle="tooltip" data-placement="bottom" title="This is only an example site">Privacy note</a> | <a href="" data-toggle="tooltip" data-placement="bottom" title="This is only an example site">Use of cookies</a></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ornare turpis et quam pharetra dapibus non nec ante. Cras ac sapien iaculis, vestibulum mi eu, egestas turpis. Suspendisse vitae massa aliquet, sagittis nunc non, interdum magna. Suspendisse aliquam sapien at libero consectetur convallis.</p>
+            </div>
+        </div>
+        
+        
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>
